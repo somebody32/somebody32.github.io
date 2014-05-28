@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>WebRTC test</title>
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <!-- 1. create a presentation
+         2. send a signal to others when the slide changed
+         3. allow to switch slides only when signal is received
+     -->
+  </head>
+  <body>
+    <div id="counter">
+
+    </div>
+    <script charset="utf-8">
+      var peer = new Peer('presenter', { key: '860375fbhi4fgvi' });
+      var connections = {};
+      peer.on('connection', function(conn) {
+        conn.on('data', function(data) {
+          console.log('Received', data);
+        });
+
+        conn.on('open', function() {
+          connections[conn.peer] = conn;
+          updateCounter();
+        });
+
+        conn.on('close', function() {
+          delete connections[conn.peer];
+          updateCounter();
+        });
+      });
+
+      function hailAllConnections(){
+        for (var connection in connections) {
+          connections[connection].send({n: 1, time: new Date});
+        };
+      }
+
+      function updateCounter(){
+        document.getElementById('counter').innerHTML = Object.keys(connections).length;
+      }
+      updateCounter();
+    </script>
+  </body>
+</html>

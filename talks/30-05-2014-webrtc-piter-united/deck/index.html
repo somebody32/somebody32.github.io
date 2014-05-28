@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>WebRTC</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/swiss.css">
+  <link rel="stylesheet" media="screen" href="themes/style/fonts.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+  <style media="screen">
+    .diagram {
+      margin: auto;
+      height: 100%;
+      width: 100%;
+    }
+    .diagram svg { height: 100%; width: 100%; }
+    h1 { font-family: "FiraSans"; font-weight: 300; }
+  </style>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1>WebRTC — это сложно</h1>
+    </section>
+
+    <section class="slide">
+      <div class="diagram">
+        Client->Server: Hi, server! Pass this msg pls
+        Server->Another Client: Hi, I've got a msg for ya!
+        Another Client->Server: OK!
+        Server->Client: Done!
+      </div>
+    </section>
+
+    <section id="slide-2" class="deck-loading">
+      <h1>Slide 3</h1>
+    </section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <!-- <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div> -->
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <p>
+      <span class="allow-next"></span>
+    </p>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<!-- <script src="extensions/menu/deck.menu.js"></script> -->
+<!-- <script src="extensions/goto/deck.goto.js"></script> -->
+<!-- <script src="extensions/playcontrol/playcontrol.js"></script> -->
+<script src="extensions/status/deck.status.js"></script>
+<!-- <script src="extensions/navigation/deck.navigation.js"></script> -->
+<!-- <script src="extensions/scale/deck.scale.js"></script> -->
+
+<script charset="utf-8" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script charset="utf-8" src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script charset="utf-8" src="./sd.js">
+
+</script>
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+    $("#slide-1 .diagram").sequenceDiagram({theme: 'hand'});
+  });
+</script>
+</body>
+</html>
