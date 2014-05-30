@@ -213,6 +213,17 @@ h1, .vcenter {
   transform: none;
 }
 
+.vcenter {
+  position: relative;
+  top: auto;
+  padding: 0;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
 h2 {
   font-size: 2.25em;
   font-weight: bold;
@@ -225,6 +236,7 @@ h3 {
   font-size: 1.4375em;
   font-weight: bold;
   margin-bottom: .30435em;
+  text-align: center;
 }
 
 h4 {
@@ -256,6 +268,10 @@ video, iframe, img {
 
 p, blockquote, iframe, img, ul, ol, pre, video {
   margin-bottom: 1em;
+}
+
+ul {
+  list-style: none;
 }
 
 pre {
@@ -386,4 +402,8 @@ a:hover, a:focus {
 }
 .deck-menu .deck-current, .no-touch .deck-menu .slide:hover {
   background: #ddf;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }

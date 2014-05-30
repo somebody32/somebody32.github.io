@@ -30,13 +30,15 @@
   <!-- Required Modernizr file -->
   <script src="modernizr.custom.js"></script>
   <style media="screen">
-    .diagram {
-      margin: auto;
+    .diagram-wrapper {
       height: 100%;
       width: 100%;
     }
     .diagram svg { height: 100%; width: 100%; }
     h1 { font-family: "FiraSans"; font-weight: 300; }
+    h3 { font-family: "FiraSans"; font-weight: normal; }
+    h2 { font-family: "FiraSans" }
+    li { font-family: "FiraSans"; }
   </style>
 </head>
 <body>
@@ -49,7 +51,7 @@
     </section>
 
     <section class="slide">
-      <div class="diagram">
+      <div class="diagram vcenter">
         Client->Server: Hi, server! Pass this msg pls
         Server->Another Client: Hi, I've got a msg for ya!
         Another Client->Server: OK!
@@ -57,8 +59,147 @@
       </div>
     </section>
 
-    <section id="slide-2" class="deck-loading">
-      <h1>Slide 3</h1>
+    <section class="slide">
+      <div class='diagram-wrapper'>
+        <div class="diagram">
+          Client->Another Client: Hi, I've got a msg for ya!
+          Another Client->Client: OK, buddy!
+        </div>
+        <section class="slide">
+          <h3>Это так не работает :(</h3>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="diagram vcenter">
+        Client->Firewall/NAT: Hi, I've got a msg for ya!
+        Note over Firewall/NAT: HAHA
+        Another Client->Firewall/NAT: Please leave me alone!
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="diagram vcenter">
+        Client->Firewall/NAT: Hi, I've got a msg for ya!
+        Client->Bad Person: Please steal my data!
+        Note over Firewall/NAT: HAHA
+        Note over Bad Person: HAHA
+        Another Client->Firewall/NAT: Please leave me alone!
+      </div>
+    </section>
+
+    <section class="slide">
+      <h1>Скучно</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Что?</h2>
+      <ul class="vcenter">
+        <li class="slide">Игры</li>
+        <li class="slide">Видео</li>
+        <li class="slide">Аудио</li>
+        <li class="slide">Данные (скучно)</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Почему?</h2>
+      <ul class="vcenter">
+        <li class="slide">Очень быстро, новые транспортные протоколы</li>
+        <li class="slide">Peer-to-peer</li>
+        <li class="slide">Не нужны плагины</li>
+        <li class="slide">Шифрование из коробки</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h1>В чем сложность?</h1>
+    </section>
+
+    <section class="slide">
+      <img src="./images/simple-callflow.svg">
+    </section>
+
+    <section class="slide">
+      <h2>Если упростить</h2>
+      <ul class="vcenter">
+        <li class="slide">Настройка соединения (нужны сторонние сервера)</li>
+        <li class="slide">Передача данных (не нужны сервера)</li>
+        <li class="slide">Любое изменение соединения (снова нужны сервера)</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Настройка (signaling)</h2>
+      <ul class="vcenter">
+        <li class="slide">Выяснить все о себе: кодеки, разрешение и прочее</li>
+        <li class="slide">Получить адрес своего собеседника</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Подводные камни</h2>
+      <ul class="vcenter">
+        <li class="slide">В спецификации ничего нет о передаче метаданных собеседнику</li>
+        <li class="slide">Получение адрес своего собеседника. Страшные STUN-, TURN-сервера</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Почему signaling не входит в спецификацию?</h2>
+      <ul class="vcenter">
+        <li class="slide">Unix way: WebRTC отвечает только за передачу данных</li>
+        <li class="slide">Гибкость, всегда найдутся любители крикнуть, что лучшая спецификация — ее отсутсвие</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Так что тогда такое WebRTC?</h2>
+      <pre style="margin-top: 150px">
+        <code>RTCPeerConnection, RTCDataChannel, getUserMedia</code>
+      </pre>
+      <h3 class="slide">+ знание про ICE</h3>
+    </section>
+
+    <section class="slide">
+      <h2>Interactive Connectivity Establishment</h2>
+      <ul class="vcenter">
+        <li class="slide">Session Traversal Utilities for NAT (STUN)</li>
+        <li class="slide">Traversal Using Relays around NAT (TURN)</li>
+        <li class="slide">если STUN облажался, то данные пойдут через сервер :(</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h1>Это слишком сложно, можно я пойду?</h1>
+    </section>
+
+    <section class="slide">
+      <h2>We've got an <span class="strikethrough">app</span>, <span class="strikethrough">gem</span>, npm-package for that</h2>
+      <ul class="vcenter">
+        <li class="slide">SimpleWebRTC</li>
+        <li class="slide">RTC.io</li>
+        <li class="slide">Peer.js</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>А поддержка?</h2>
+      <iframe src="http://iswebrtcreadyyet.com/" width="100%" height="600" frameborder="0"></iframe>
+    </section>
+
+    <section class="slide">
+      <h2>Спасибо</h2>
+      <ul class="vcenter">
+        <li class="slide">Илья Заяц</li>
+        <li class="slide">Twitter: @23ydobemos</li>
+        <li class="slide">
+          <p><img src="http://frontflip.me/images/logo.jpg" width="200px"></p>
+          <p>http://frontflip.me</p>
+        </li>
+        <li class="slide">ResumUP</li>
+      </ul>
     </section>
 
     <!-- End slides. -->
@@ -78,10 +219,6 @@
       <span class="deck-status-total"></span>
     </p>
 
-    <p>
-      <span class="allow-next"></span>
-    </p>
-
     <!-- End extension snippets. -->
   </div>
 
@@ -99,6 +236,7 @@
 
 <script charset="utf-8" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 <script charset="utf-8" src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 <script charset="utf-8" src="./sd.js">
 
 </script>
@@ -108,7 +246,10 @@
 <script>
   $(function() {
     $.deck('.slide');
-    $("#slide-1 .diagram").sequenceDiagram({theme: 'hand'});
+    $(".diagram").sequenceDiagram({theme: 'hand'});
+
+    var peer = new Peer({key: '860375fbhi4fgvi'});
+    var conn = peer.connect('presenter');
   });
 </script>
 </body>

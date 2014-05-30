@@ -2,15 +2,47 @@
   <head>
     <title>WebRTC test</title>
     <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
-    <!-- 1. create a presentation
-         2. send a signal to others when the slide changed
-         3. allow to switch slides only when signal is received
-     -->
+    <style type="text/css">
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333333;
+        background-color: #ffffff;
+      }
+
+      .aligner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .item {
+        max-width: 50%;
+      }
+
+      .badge {
+        margin: 0 auto;
+        padding: 6px 30px 7px 27px;
+        font-size: 30px;
+        font-weight: bold;
+        white-space: nowrap;
+        color: #ffffff;
+        background-color: #999999;
+        border-radius: 9px;
+        width: 10px;
+      }
+
+      /*.link { align-self: flex-start; }*/
+    </style>
   </head>
   <body>
-    <div id="counter">
-
+    <div class="aligner">
+      <div class="item">
+        <h1>bitly</h1>
+        <div id="counter" class="badge"></div>
+      </div>
     </div>
+
     <script charset="utf-8">
       var peer = new Peer('presenter', { key: '860375fbhi4fgvi' });
       var connections = {};
