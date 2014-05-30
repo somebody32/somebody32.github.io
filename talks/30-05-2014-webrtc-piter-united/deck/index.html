@@ -249,6 +249,7 @@
     $(".diagram").sequenceDiagram({theme: 'hand'});
 
     var peer = new Peer({key: '860375fbhi4fgvi'});
+    peer.on('error', function(err) { alert(err.toString()) });
     var conn = peer.connect('presenter');
   });
 </script>
